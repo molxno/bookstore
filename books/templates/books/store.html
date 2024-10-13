@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Guardar un nuevo libro</h2>
+    <p>Llena el formulario para guardar un nuevo libro en base de datos</p>
+
+    <form action="{% url "store" %}" method="post" class="store-books">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock %}
