@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Listado de libros</h2>
+    <p>Explora nuestra selección de libros y disfruta de las mejores ofertas.</p>
+
+    <section class="featured-books">
+        <h3>Libros Destacados</h3>
+        <div class="book-list">
+            {% for book in books %}
+                <div class="book-item">
+                    {% if book.cover %}
+                        <img src="{{ book.cover.url }}" alt="{{ book.title }}" class="book-cover">
+                    {% else %}
+                        <img src="https://icons.veryicon.com/png/o/education-technology/alibaba-cloud-iot-business-department/image-load-failed.png"
+                             alt="Sin portada" class="book-cover">
+                    {% endif %}
+                    <div class="book-info">
+                        <h4>{{ book.title }}</h4>
+                        <p class="book-price">Precio: ${{ book.price }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
