@@ -499,7 +499,7 @@
     </routine>
     <schema id="191" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-10-13.22:48:43</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-10-13.23:28:11</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="192" parent="16">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1937,24 +1937,24 @@ permission_id</ColNames>
       <Position>5</Position>
       <StoredType>integer|0s</StoredType>
     </column>
-    <column id="637" parent="562" name="cover">
-      <Position>6</Position>
-      <StoredType>varchar(100)|0s</StoredType>
-    </column>
-    <column id="638" parent="562" name="stock">
+    <column id="637" parent="562" name="stock">
       <NotNull>1</NotNull>
-      <Position>7</Position>
+      <Position>6</Position>
       <StoredType>integer|0s</StoredType>
     </column>
-    <column id="639" parent="562" name="price">
+    <column id="638" parent="562" name="price">
       <NotNull>1</NotNull>
-      <Position>8</Position>
+      <Position>7</Position>
       <StoredType>decimal|0s</StoredType>
     </column>
-    <column id="640" parent="562" name="publisher_id">
+    <column id="639" parent="562" name="publisher_id">
       <NotNull>1</NotNull>
-      <Position>9</Position>
+      <Position>8</Position>
       <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="640" parent="562" name="cover">
+      <Position>9</Position>
+      <StoredType>varchar(100)|0s</StoredType>
     </column>
     <foreign-key id="641" parent="562">
       <ColNames>publisher_id</ColNames>

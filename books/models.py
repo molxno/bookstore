@@ -9,7 +9,7 @@ class Book(models.Model):
     publication_date = models.DateField(verbose_name="Fecha de publicación")
     isbn = models.CharField(max_length=13, verbose_name="ISBN")
     pages = models.IntegerField(verbose_name="Páginas")
-    cover = models.ImageField(upload_to='covers/', blank=True, null=True, verbose_name="Portada")
+    cover = models.ImageField(upload_to='images', null=True, verbose_name="Portada")
     stock = models.IntegerField(default=0, verbose_name="Stock")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio")
 

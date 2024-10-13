@@ -1,6 +1,5 @@
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
-
 from books.forms import BookForm
 from books.models import Book
 
@@ -22,7 +21,7 @@ class BookFormView(FormView):
 
     def form_valid(self, form):
         form.save()
-        return super(BookFormView, self).form_valid(form)
+        return super().form_valid(form)
 
     def form_invalid(self, form):
-        return super(BookFormView, self).form_invalid(form)
+        return super().form_invalid(form)
