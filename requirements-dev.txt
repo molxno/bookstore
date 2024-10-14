@@ -1,10 +1,13 @@
 asgiref==3.8.1
 asttokens==2.4.1
+certifi==2024.8.30
+charset-normalizer==3.4.0
 decorator==5.1.1
 Django==5.1.2
 django-seed==0.3.1
 executing==2.1.0
 Faker==30.3.0
+idna==3.10
 ipython==8.28.0
 jedi==0.19.1
 matplotlib-inline==0.1.7
@@ -16,6 +19,7 @@ ptyprocess==0.7.0
 pure_eval==0.2.3
 Pygments==2.18.0
 python-dateutil==2.9.0.post0
+requests==2.32.3
 setuptools==75.1.0
 six==1.16.0
 sqlparse==0.5.1
@@ -23,5 +27,6 @@ stack-data==0.6.3
 toposort==1.10
 traitlets==5.14.3
 typing_extensions==4.12.2
+urllib3==2.2.3
 wcwidth==0.2.13
 wheel==0.44.0

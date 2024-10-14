@@ -3,27 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>{% block title %}Bookstore{% endblock %}</title>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" >
 </head>
-<body>
-<header>
-    <h1>Molxno Bookstore 📚</h1>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+<header class="bg-gray-800 text-white py-4 text-center">
+    <h1 class="text-2xl"><a href="/books" class="text-white hover:underline">Molxno Bookstore 📚</a></h1>
 </header>
 
-<div class="content">
+<div class="flex-grow p-6">
     {% block content %}
 
     {% endblock %}
 </div>
 
-<footer>
+<footer class="bg-gray-800 text-white text-center py-4">
     <small>
         © molxno, Property of a Backend Magician.<br>
         Made with ❤️
     </small>
 </footer>
+
 </body>
 </html>

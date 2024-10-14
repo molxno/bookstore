@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="text-center text-2xl font-bold mb-6">Guardar un nuevo libro</h2>
+    <p class="text-center mb-4">Llena el formulario para guardar un nuevo libro en la base de datos</p>
+
+    <form action="{% url "add_book" %}" method="post" enctype="multipart/form-data"
+          class="max-w-lg mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-lg">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200">Guardar
+        </button>
+    </form>
+
+    {% if img_obj %}
+        <h3 class="text-center text-lg font-semibold mt-6">Successfully uploaded: {{ img_obj.title }}</h3>
+        <img src="{{ img_obj.image.url }}" alt="cover" class="block mx-auto mt-4 max-h-72 object-contain">
+    {% endif %}
+{% endblock %}
