@@ -121,5 +121,3 @@ If you have any questions or feedback, feel free to reach out:
 * **LinkedIn**: [Santiago Molano](https://www.linkedin.com/in/molanosantiago/)
 
 * **Website**: [molxno.dev](https://molxno.dev/)
-
-```
