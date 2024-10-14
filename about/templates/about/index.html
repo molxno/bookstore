@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="flex justify-center items-center min-h-screen">
+        <div class="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
+                <!-- Texto de bienvenida -->
+                <div class="mx-auto max-w-lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
+                    <h2 class="text-3xl font-bold sm:text-4xl">Descubre la Nueva Colección de Libros</h2>
+                    <p class="mt-4 text-blue-600">
+                        La Biblioteca Pública Municipal te invita a explorar una increíble selección de nuevos libros.
+                        En colaboración con organismos locales, regionales y nacionales, hemos ampliado nuestra oferta
+                        para
+                        todos los gustos. ¡Ven y disfruta de la lectura mientras contribuyes a la cultura y educación de
+                        nuestro municipio!
+                    </p>
+                    <a href="/books"
+                       class="mt-8 inline-block rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring focus:ring-yellow-400">
+                        Comienza hoy
+                    </a>
+                </div>
+                <!-- Íconos de categorías -->
+                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                    <!-- Categoría Romance -->
+                    <a href="/books"
+                       class="block rounded-xl border border-blue-100 p-4 shadow-sm hover:border-blue-200 hover:ring-1 hover:ring-blue-200 focus:outline-none focus:ring">
+                    <span class="inline-block rounded-lg bg-blue-50 p-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3v12h18V3H3zM3 19v-2h18v2a1 1 0 01-1 1H4a1 1 0 01-1-1z" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                        <h2 class="mt-2 font-bold">Romance</h2>
+                        <p class="hidden sm:mt-1 sm:block sm:text-sm sm:text-blue-600">
+                            Para los que buscan historias llenas de amor y emoción.
+                        </p>
+                    </a>
+
+                    <!-- Categoría Historia -->
+                    <a href="/books"
+                       class="block rounded-xl border border-blue-100 p-4 shadow-sm hover:border-blue-200 hover:ring-1 hover:ring-blue-200 focus:outline-none focus:ring">
+                    <span class="inline-block rounded-lg bg-blue-50 p-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 8v8m0-8l-4 4m4-4l4 4m-4 8a8 8 0 110-16 8 8 0 010 16z" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                        <h2 class="mt-2 font-bold">Historia</h2>
+                        <p class="hidden sm:mt-1 sm:block sm:text-sm sm:text-blue-600">
+                            Descubre los acontecimientos que han marcado nuestro mundo.
+                        </p>
+                    </a>
+
+                    <!-- Categoría Ciencia -->
+                    <a href="/books"
+                       class="block rounded-xl border border-blue-100 p-4 shadow-sm hover:border-blue-200 hover:ring-1 hover:ring-blue-200 focus:outline-none focus:ring">
+                    <span class="inline-block rounded-lg bg-blue-50 p-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 12L8 8.5v7L13.5 12z" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                        <h2 class="mt-2 font-bold">Ciencia</h2>
+                        <p class="hidden sm:mt-1 sm:block sm:text-sm sm:text-blue-600">
+                            Expande tus conocimientos con lo último en ciencia.
+                        </p>
+                    </a>
+
+                    <!-- Categoría Cuentos -->
+                    <a href="/books"
+                       class="block rounded-xl border border-blue-100 p-4 shadow-sm hover:border-blue-200 hover:ring-1 hover:ring-blue-200 focus:outline-none focus:ring">
+                    <span class="inline-block rounded-lg bg-blue-50 p-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3h18v6H3V3zm0 6l9 5 9-5v6H3v-6z" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                        <h2 class="mt-2 font-bold">Cuentos</h2>
+                        <p class="hidden sm:mt-1 sm:block sm:text-sm sm:text-blue-600">
+                            Relatos breves para disfrutar en cualquier momento.
+                        </p>
+                    </a>
+
+                    <!-- Categoría Fábulas -->
+                    <a href="/books"
+                       class="block rounded-xl border border-blue-100 p-4 shadow-sm hover:border-blue-200 hover:ring-1 hover:ring-blue-200 focus:outline-none focus:ring">
+                    <span class="inline-block rounded-lg bg-blue-50 p-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 12v9h18v-9m-9 9V9m0 12l-4-4m4 4l4-4" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                        <h2 class="mt-2 font-bold">Fábulas</h2>
+                        <p class="hidden sm:mt-1 sm:block sm:text-sm sm:text-blue-600">
+                            Historias con lecciones morales para todas las edades.
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

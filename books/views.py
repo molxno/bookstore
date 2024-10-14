@@ -15,3 +15,12 @@ class BooksView(ListView):
         context = super().get_context_data(**kwargs)
         context['total'] = self.get_queryset().count()
         return context
+
+
+class BookView(TemplateView):
+    template_name = 'books/detail_book.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['book'] = Book.objects.get(pk=kwargs['pk'])
+        return context
