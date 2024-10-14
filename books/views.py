@@ -15,16 +15,3 @@ class BooksView(ListView):
         context = super().get_context_data(**kwargs)
         context['total'] = self.get_queryset().count()
         return context
-
-
-class BookFormView(FormView):
-    template_name = 'books/add_book.html'
-    form_class = BookForm
-    success_url = reverse_lazy('list_book')
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-
-    def form_invalid(self, form):
-        return super().form_invalid(form)
