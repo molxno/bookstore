@@ -9,14 +9,14 @@ class Book(models.Model):
     publication_date = models.DateField(verbose_name="Fecha de publicación")
     isbn = models.CharField(max_length=13, verbose_name="ISBN")
     pages = models.IntegerField(verbose_name="Páginas")
-    cover = models.ImageField(upload_to='images', null=True, verbose_name="Portada")
+    cover = models.ImageField(null=True, verbose_name="Portada")
     stock = models.IntegerField(default=0, verbose_name="Stock")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio")
 
     def __str__(self):
         authors = ', '.join(self.authors.values_list('name', flat=True))
         cover = self.cover.url if self.cover else 'Sin portada'
-        return f"{self.title} ({authors}) - {self.publisher.name} - {self.publication_date} - {self.isbn} - {self.pages} páginas - {cover} - {self.stock} unidades - ${self.price}"
+        return f"{self.title} ({authors})"
 
 
 class Author(models.Model):
