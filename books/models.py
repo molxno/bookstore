@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 class Book(models.Model):
     title = models.CharField(max_length=100, verbose_name="Título")
+    description = models.TextField(verbose_name="Descripción")
     authors = models.ManyToManyField('Author', related_name='books', verbose_name="Autores")
     publisher = models.ForeignKey('Publisher', on_delete=models.CASCADE, related_name='books', verbose_name="Editora")
     publication_date = models.DateField(verbose_name="Fecha de publicación")

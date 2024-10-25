@@ -6,7 +6,7 @@ from books.models import Book, Publisher, Author
 # Register your models here.
 class BookAdmin(admin.ModelAdmin):
     model = Book
-    list_display = ['title', 'publisher', 'publication_date', 'isbn', 'pages', 'stock', 'price']
+    list_display = ['title', 'description', 'publisher', 'publication_date', 'isbn', 'pages', 'stock', 'price']
     search_fields = ['title', 'publisher__name', 'isbn']
 
 
