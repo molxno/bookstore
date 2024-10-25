@@ -1,9 +1,7 @@
-import os
 import requests
 from django.core.files import File
 from django.core.management.base import BaseCommand
 from books.models import Book, Author, Publisher
-from django.conf import settings
 from io import BytesIO
 
 
@@ -76,6 +74,7 @@ class Command(BaseCommand):
         books_data = [
             {
                 'title': 'Cien Años de Soledad',
+                'description': 'La obra maestra de Gabriel García Márquez, un clásico de la literatura universal.',
                 'authors': [author1],
                 'publisher': publisher1,
                 'publication_date': '1967-06-05',
@@ -87,6 +86,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Harry Potter y la Piedra Filosofal',
+                'description': 'La primera novela de la serie de Harry Potter, escrita por J.K. Rowling.',
                 'authors': [author2],
                 'publisher': publisher2,
                 'publication_date': '1997-06-26',
@@ -98,6 +98,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'El Principito',
+                'description': 'Un cuento poético y filosófico del escritor francés Antoine de Saint-Exupéry.',
                 'authors': [author3],
                 'publisher': publisher3,
                 'publication_date': '1943-04-06',
@@ -113,6 +114,7 @@ class Command(BaseCommand):
             # Crear el libro
             book = Book.objects.create(
                 title=book_data['title'],
+                description=book_data['description'],
                 publisher=book_data['publisher'],
                 publication_date=book_data['publication_date'],
                 isbn=book_data['isbn'],
