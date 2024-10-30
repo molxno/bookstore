@@ -40,15 +40,15 @@
             <div class="flex items-center gap-4">
                 {% if user.is_authenticated %}
                     <div class="sm:flex sm:gap-4">
-                        <div class="hidden sm:flex">
-                            <p class="text-white">{{ user.email }}</p>
-                        </div>
-                        <button
-                                type="submit"
-                                class="rounded-md bg-red-700 px-5 py-2.5 text-sm font-medium text-white shadow"
-                        >
-                            Logout
-                        </button>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button
+                                    type="submit"
+                                    class="rounded-md bg-red-700 px-5 py-2.5 text-sm font-medium text-white shadow"
+                            >
+                                Logout
+                            </button>
+                        </form>
                     </div>
                 {% else %}
                     <div class="sm:flex sm:gap-4">
@@ -62,7 +62,7 @@
                         <div class="hidden sm:flex">
                             <a
                                     class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-red-700"
-                                    href="{% url "signup" %}"
+                                    href="{% url "register" %}"
                             >
                                 Register
                             </a>
