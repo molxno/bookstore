@@ -1,7 +1,11 @@
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView, ListView
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from books.forms import BookForm
 from books.models import Book
+from books.serializers import BookSerializer
 
 
 # Create your views here.
@@ -24,3 +28,13 @@ class BookView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['book'] = Book.objects.get(pk=kwargs['pk'])
         return context
+
+
+class BooksAPI(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request):
+        books = Book.objects.all()
+        serializer = BookSerializer(books, many=True)
+        return Response(serializer.data)
