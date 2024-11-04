@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}Bookstore{% endblock %}</title>
+
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}">
+</head>
+<body class="min-h-screen flex flex-col">
+
+<header class="bg-gray-900">
+    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+            <div class="md:flex md:items-center md:gap-12">
+                <a class="block text-white transition hover:text-red-700/75" href="{% url "home" %}">
+                    <span class="sr-only">Home</span>
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                    >
+                        <path d="M3 3h18v18H3V3z"></path>
+                        <path d="M7 3v18"></path>
+                        <path d="M17 3v18"></path>
+                        <path d="M3 9h18"></path>
+                        <path d="M3 15h18"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                {% if user.is_authenticated %}
+                    <div class="sm:flex sm:gap-4">
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button
+                                    type="submit"
+                                    class="rounded-md bg-red-700 px-5 py-2.5 text-sm font-medium text-white shadow"
+                            >
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+                {% else %}
+                    <div class="sm:flex sm:gap-4">
+                        <a
+                                class="rounded-md bg-red-700 px-5 py-2.5 text-sm font-medium text-white shadow"
+                                href="{% url "login" %}"
+                        >
+                            Login
+                        </a>
+
+                        <div class="hidden sm:flex">
+                            <a
+                                    class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-red-700"
+                                    href="{% url "register" %}"
+                            >
+                                Register
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="block md:hidden">
+                        <button class="rounded bg-red-100 p-2 text-red-700 transition hover:text-red-600/75">
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="size-5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="flex-grow p-6">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+<footer class="bg-gray-900">
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <div class="flex justify-center text-white sm:justify-start">
+                <a class="block text-white transition hover:text-red-700/75" href="{% url "home" %}">
+                    <span class="sr-only">Home</span>
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                    >
+                        <path d="M3 3h18v18H3V3z"></path>
+                        <path d="M7 3v18"></path>
+                        <path d="M17 3v18"></path>
+                        <path d="M3 9h18"></path>
+                        <path d="M3 15h18"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <p class="mt-4 text-center text-sm text-white lg:mt-0 lg:text-right">
+                © molxno, Property of a Backend Magician.<br>
+                Made with ❤️
+            </p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
