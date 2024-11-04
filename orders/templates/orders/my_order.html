@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="mx-auto max-w-screen-lg px-4 py-8 sm:px-6 lg:px-8">
+        <div class="bg-white shadow-lg rounded-lg p-6">
+            <!-- Order Header -->
+            <div class="mb-6 border-b pb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Order Details</h2>
+                <p class="mt-2 text-gray-600">
+                    <span class="font-semibold">User:</span> {{ order.user.username }}
+                </p>
+                <p class="text-gray-600">
+                    <span class="font-semibold">Date:</span> {{ order.date|date:"F j, Y" }}
+                </p>
+            </div>
+
+            <!-- Order Books -->
+            <div>
+                {% if order.orderbook_set.all %}
+                    <table class="min-w-full border rounded-lg">
+                        <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 border-b">Book</th>
+                            <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700 border-b">Price</th>
+                            <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700 border-b">Quantity</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order_book in order.orderbook_set.all %}
+                            <tr class="border-b">
+                                <td class="px-6 py-4 text-gray-800">
+                                    {{ order_book.book.title }}
+                                </td>
+                                <td class="px-6 py-4 text-right text-gray-800">
+                                    ${{ order_book.book.price }}
+                                </td>
+                                <td class="px-6 py-4 text-right text-gray-800">
+                                    {{ order_book.quantity }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="mt-4 text-center text-gray-500">No books in this order</p>
+                {% endif %}
+            </div>
+
+            <!-- Total Price -->
+            <div class="mt-6 border-t pt-4">
+                <p class="text-right text-lg font-semibold text-gray-800">
+                    Total: ${{ order.price }}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
