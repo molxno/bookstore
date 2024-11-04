@@ -14,15 +14,22 @@
                 {% csrf_token %}
                 <p class="text-center text-lg font-medium">Log in to your account</p>
 
+                {% if form.non_field_errors %}
+                    <div class="mb-4 text-center text-sm text-red-600">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
                 <div>
                     <label for="username" class="sr-only">Username</label>
-
                     <div class="relative">
                         <input
                                 type="text"
                                 id="username"
                                 name="username"
-                                class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm {% if form.username.errors %}border-red-500{% endif %}"
                                 placeholder="Enter your username"
                                 required
                         />
@@ -43,17 +50,21 @@
                             </svg>
                         </span>
                     </div>
+                    {% if form.username.errors %}
+                        <p class="mt-2 text-sm text-red-600">
+                            {{ form.username.errors.0 }}
+                        </p>
+                    {% endif %}
                 </div>
 
                 <div>
                     <label for="password" class="sr-only">Password</label>
-
                     <div class="relative">
                         <input
                                 type="password"
                                 id="password"
                                 name="password"
-                                class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm {% if form.password.errors %}border-red-500{% endif %}"
                                 placeholder="Enter your password"
                                 required
                         />
@@ -80,6 +91,11 @@
                             </svg>
                         </span>
                     </div>
+                    {% if form.password.errors %}
+                        <p class="mt-2 text-sm text-red-600">
+                            {{ form.password.errors.0 }}
+                        </p>
+                    {% endif %}
                 </div>
 
                 <button
@@ -90,7 +106,7 @@
                 </button>
 
                 <p class="text-center text-sm text-gray-500">
-                    don't have an account?
+                    Don't have an account?
                     <a class="underline" href="{% url "register" %}">Sign up</a>
                 </p>
             </form>

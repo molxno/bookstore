@@ -1,9 +1,14 @@
-from django.contrib.auth.forms import UserCreationForm
-from django.views import generic
-from django.urls import reverse_lazy
+from django.shortcuts import redirect, render
+
+from users.forms import CreateUserForm
 
 
-class RegisterView(generic.CreateView):
-    form_class = UserCreationForm
-    template_name = "users/register.html"
-    success_url = reverse_lazy("login")
+def register(request):
+    form = CreateUserForm()
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    context = {'form': form}
+    return render(request, 'users/register.html', context)
