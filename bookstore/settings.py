@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'books',
     'users',
     'home',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,4 @@ CRISPY_TEMPLATE_PACK = 'tailwind'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'

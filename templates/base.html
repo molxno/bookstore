@@ -11,11 +11,11 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-<header class="bg-gray-900">
+<header class="bg-transparent">
     <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
             <div class="md:flex md:items-center md:gap-12">
-                <a class="block text-white transition hover:text-red-700/75" href="{% url "home" %}">
+                <a class="block text-red-700 transition hover:text-gray-900" href="{% url "home" %}">
                     <span class="sr-only">Home</span>
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -44,16 +44,23 @@
                             {% csrf_token %}
                             <button
                                     type="submit"
-                                    class="rounded-md bg-red-700 px-5 py-2.5 text-sm font-medium text-white shadow"
+                                    class="rounded-md bg-red-700 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-gray-900"
                             >
                                 Logout
                             </button>
                         </form>
+
+                        <a
+                                class="rounded-md bg-red-700 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-gray-900"
+                                href="{% url "my_order" %}"
+                        >
+                            My order
+                        </a>
                     </div>
                 {% else %}
                     <div class="sm:flex sm:gap-4">
                         <a
-                                class="rounded-md bg-red-700 px-5 py-2.5 text-sm font-medium text-white shadow"
+                                class="rounded-md bg-red-700 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-gray-900"
                                 href="{% url "login" %}"
                         >
                             Login
@@ -61,7 +68,7 @@
 
                         <div class="hidden sm:flex">
                             <a
-                                    class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-red-700"
+                                    class="rounded-md bg-red-700 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-gray-900"
                                     href="{% url "register" %}"
                             >
                                 Register
@@ -88,6 +95,18 @@
         </div>
     </div>
 </header>
+
+{% block messages %}
+    {% if messages %}
+        <div class="p-4 mb-4 max-w-screen-md mx-auto space-y-3">
+            {% for message in messages %}
+                <div class="p-3 rounded shadow-md text-center text-white {{ message.tags|default:'bg-gray-800' }}">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
 
 <div class="flex-grow p-6">
     {% block content %}
