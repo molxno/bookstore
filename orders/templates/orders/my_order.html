@@ -23,6 +23,7 @@
                             <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 border-b">Book</th>
                             <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700 border-b">Price</th>
                             <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700 border-b">Quantity</th>
+                            <th class="px-6 py-3 text-right text-sm font-semibold text-gray-700 border-b">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -37,6 +38,14 @@
                                 <td class="px-6 py-4 text-right text-gray-800">
                                     {{ order_book.quantity }}
                                 </td>
+                                <td class="px-6 py-4 text-right">
+                                    <form action="{% url 'delete_order_book' order_book.pk %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="text-red-600 hover:text-red-900">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -49,7 +58,7 @@
             <!-- Total Price -->
             <div class="mt-6 border-t pt-4">
                 <p class="text-right text-lg font-semibold text-gray-800">
-                    Total: ${{ order.price }}
+                    Total: ${{ order.calculate_total }}
                 </p>
             </div>
         </div>

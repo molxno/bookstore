@@ -1,7 +1,9 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import DetailView, CreateView
 
 from orders.forms import OrderBookForm
@@ -29,3 +31,11 @@ class CreateOrderBookView(LoginRequiredMixin, CreateView):
         form.instance.quantity = 1
         form.save()
         return super().form_valid(form)
+
+
+class DeleteOrderBookView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        order_book = get_object_or_404(OrderBook, pk=pk, order__user=request.user, order__status=True)
+        order_book.delete()
+        messages.success(request, "Book removed from the order.", extra_tags='bg-green-500')
+        return HttpResponseRedirect(reverse_lazy('my_order'))
