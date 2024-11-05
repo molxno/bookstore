@@ -10,6 +10,9 @@ class Order(models.Model):
     status = models.BooleanField(default=True)
     date = models.DateTimeField(auto_now_add=True)
 
+    def calculate_total(self):
+        return sum(item.book.price * item.quantity for item in self.orderbook_set.all())
+
     def __str__(self):
         return f"Order {self.id} by {self.user.username}"
 
