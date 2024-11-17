@@ -82,10 +82,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'bookstoredb',
-        'USER': 'santiago',
-        'PASSWORD': 'santiago',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'USER': 'bookstoredb',
+        'PASSWORD': 'AVNS_qG_xtkg6yznxirJEnTh',
+        'HOST': 'app-18527ee7-771f-496e-93cb-8376ff7b6984-do-user-15249981-0.f.db.ondigitalocean.com',
+        'PORT': '25060',
     }
 }
 
