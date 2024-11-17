@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
+from django.core.management.utils import get_random_secret_key
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,12 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-txhhj@ea=09+g)t)-r)d)c#so(2ddmu)7f7pjg8eb_=(&zdn6^'
-
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 # Application definition
 
@@ -81,11 +82,11 @@ WSGI_APPLICATION = 'bookstore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bookstoredb',
-        'USER': 'bookstoredb',
-        'PASSWORD': 'AVNS_qG_xtkg6yznxirJEnTh',
-        'HOST': 'app-18527ee7-771f-496e-93cb-8376ff7b6984-do-user-15249981-0.f.db.ondigitalocean.com',
-        'PORT': '25060',
+        'NAME': os.getenv('DB_NAME', 'bookstore'),
+        'USER': os.getenv('DB_USERNAME', 'santiago'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'santiago'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
